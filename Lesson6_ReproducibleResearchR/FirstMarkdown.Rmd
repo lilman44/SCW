@@ -1,0 +1,68 @@
+---
+title: "My First Markdown"
+author: "Martin Hirsch"
+date: "9/14/2019"
+output: html_document
+---
+
+Bold - **Bold**  
+Italics - _Italics_  
+Italics the other way - *Italics*
+Bold Italics - _**Bold**_
+
+# Title
+## Subtitle
+### Section Title
+#### Subsection Title
+
+- Bullet List 1
+- Bullet List 2
+- Bullet List 3
+
+* Bullet List 1
+* Bullet List 2
+* Bullet List 3
+
+1. Ordered List 1
+1. Ordered List 2
+1. Ordered List 3
+
+# ggplot
+ggplot is soooooo cool..... lol..
+
+```{r first_chunk}
+gapminder <- read.table("gapminder.txt", header = TRUE)
+head(gapminder)
+```
+
+
+# Plot
+```{r Plot}
+library(ggplot2)
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) + 
+  geom_point(shape = 17,size = 0.5) +
+  scale_x_log10() +
+  geom_smooth(method = "lm", size = 0.5)
+```
+
+# Hiding the code/editing stuff
+```#({r Plot hidden, echo = FALSE, results = 'hide', eval = FALSE, warning=FALSE})
+library(ggplot2)
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) + 
+  geom_point(shape = 17,size = 0.5) +
+  scale_x_log10() +
+  geom_smooth(method = "lm", size = 0.5)
+```
+
+# editing the Plot
+```{r Plotz,fig.height=5, fig.width=7}
+library(ggplot2)
+ggplot(data = gapminder, aes(x = gdpPercap, y = lifeExp, color = continent)) + 
+  geom_point(shape = 17,size = 0.5) +
+  scale_x_log10() +
+  geom_smooth(method = "lm", size = 0.5)
+```
+
+
+#script and text in the same line
+the mean life expectancy of Sweden is `r mean(gapminder[gapminder$country == "Sweden", "lifeExp"])`.
